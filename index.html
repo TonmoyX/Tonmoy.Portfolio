@@ -109,6 +109,44 @@
             line-height: 1.6;
         }
 
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px;
+        }
+
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .coding-gif {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-image {
+                max-width: 100%;
+            }
+
+            .about-text {
+                max-width: 100%;
+            }
+        }
+
         /* Navigation */
         .nav {
             position: fixed;
@@ -899,13 +937,19 @@
     <section id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-           <!-- <img src="Tonmoy.jpg" alt="Your Name" class="profile-image">-->
-            <p class="bio">
-               I'm started coding in 2022 and quickly got hooked on programming, web development, software development and 
-               space tech. 
-               I'm all about building dynamic web experiences and diving deep into software development. 
-               With big dreams of merging tech and space exploration, I'm grinding to turn those visions into reality.
-            </p>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="cod.gif" alt="Coding Animation" class="coding-gif">
+                </div>
+                <div class="about-text">
+                    <p class="bio">
+                        I'm started coding in 2022 and quickly got hooked on programming, web development, software development and 
+                        space tech. 
+                        I'm all about building dynamic web experiences and diving deep into software development. 
+                        With big dreams of merging tech and space exploration, I'm grinding to turn those visions into reality.
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1387,4 +1431,3 @@
     </script>
 </body>
 </html>
-
