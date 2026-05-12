@@ -4,945 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Morshed Alam Tonmoy</title>
-    <style>
-        body {
-            background: #0a1026;
-            overflow-x: hidden;
-        }
-        #star-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-            display: block;
-        }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        }
-        html{
-            scroll-behavior: smooth;
-            background: #0a1026;
-        }
-
-        body {
-            background: transparent;
-            color: #e2e8f0;
-            line-height: 1.6;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 15px 10px;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Header Section */
-        .header {
-            min-height: 80vh;
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            margin-top: 10px;
-        }
-         .imgtonmoy{
-            width: 350px;
-            margin-top: 15px;
-        }
-.mobile-nav{
-    display: none;
-}
-        .header-content {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .header-text {
-            flex: 1;
-        }
-
-        .header-image {
-            flex: 1;
-            max-width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            background-color: #f7fafc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 3px solid #e2e8f0;
-            margin-left: auto;
-        }
-
-        .header-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .header-image:hover img {
-            transform: scale(1.05);
-        }
-
-        .intro {
-            font-size: 16px;
-            color: #cbd5e0;
-            margin-bottom: 20px;
-        }
-
-        .name {
-            font-size: 60px;
-            color: #f8f9fa;
-            margin-bottom: 10px;
-            font-weight: bold;
-        }
-
-        .tagline {
-            font-size: 40px;
-            color: #cbd5e0;
-            margin-bottom: 20px;
-        }
-
-        .bio {
-            max-width: 540px;
-            margin-bottom: 30px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            padding: 20px;
-        }
-
-        .about-image {
-            flex: 1;
-            max-width: 500px;
-        }
-
-        .coding-gif {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-image {
-                max-width: 100%;
-            }
-
-            .about-text {
-                max-width: 100%;
-            }
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(20, 24, 40, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 10px 0;
-            z-index: 100;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
-            margin-bottom: 10px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .nav-link {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding-bottom: 4px;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #4299e1;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #4299e1;
-        }
-
-        .nav-link:hover::before {
-            width: 100%;
-        }
-
-        /* Mobile Nav Toggle */
-        .nav-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 32px;
-            color: #4299e1;
-            cursor: pointer;
-            z-index: 101;
-        }
-        @media (max-width: 768px) {
-            .nav-toggle {
-                display: block;
-                position: absolute;
-                right: 24px;
-           
-            }
-            .imgtonmoy{
-            width: 220px;
-        }
-            .mobile-nav {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100vw;
-                background: rgba(20, 24, 40, 0.99);
-                box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-                z-index: 100;
-                padding: 24px 0;
-                gap: 24px;
-                transition: transform 0.3s;
-            }
-            .mobile-nav.hide {
-                display: none;
-            }
-            .mobile-nav .nav-link {
-                color: #ffffff;
-                font-size: 20px;
-                justify-content: center;
-                padding: 12px 0;
-            }
-        }
-      
-
-        /* Sections */
-        section {
-            padding: 10px 10px;
-            margin-top: 5px;
-        }
-
-        .section-title {
-            color: #e2e8f0;
-            font-size: 32px;
-            margin-bottom: 40px;
-            margin: 0 10px 40px 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .section-title::after {
-            content: "";
-            display: block;
-            height: 1px;
-            width: 300px;
-            background-color: #e2e8f0;
-            margin-left: 20px;
-        }
-
-        /* Experience & Projects */
-        .card {
-            background-color: rgba(20, 24, 40, 0.8);
-            padding: 30px;
-            border-radius: 4px;
-            margin-bottom: 30px;
-            transition: transform 0.3s;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-            border: 1px solid #2d3748;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .card-title {
-            color: #f8f9fa;
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-
-        .card-subtitle {
-            color: #4299e1;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .card-date {
-            color: #4a5568;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-
-        .card-description {
-            color: #cbd5e0;
-            font-size: 16px;
-        }
-
-        /* Skills */
-        .skills-categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 32px;
-        }
-
-        .skills-category {
-            background: rgba(20, 24, 40, 0.8);
-            border-radius: 8px;
-            padding: 24px 18px 18px 18px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            border: 1px solid #2d3748;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .skills-category-title {
-            color: #4299e1;
-            font-size: 22px;
-            margin-bottom: 18px;
-            font-weight: 600;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .skill-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(30, 34, 54, 0.95);
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-size: 16px;
-            color: #e2e8f0;
-            box-shadow: 0 1px 4px rgba(66,153,225,0.15);
-            border: 1px solid #2d3748;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-
-        .skill-item:hover {
-            box-shadow: 0 4px 12px rgba(66,153,225,0.13);
-            transform: translateY(-2px) scale(1.03);
-        }
-
-        .skill-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: #e2e8f0;
-            margin-right: 2px;
-        }
-
-        /* Social Links */
-        .social-links {
-            display: flex;
-            gap: 24px;
-            margin-top: 30px;
-        }
-
-        .social-link {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 32px;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: rgba(66, 153, 225, 0.1);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        .social-link svg {
-            width: 36px;
-            height: 36px;
-            transition: filter 0.3s;
-            border-radius: 50%;
-            display: block;
-            fill: #ffffff;
-            color: #ffffff;
-        }
-
-        .social-link:hover {
-            background: rgba(66, 153, 225, 0.2);
-        }
-
-        .social-link:hover svg {
-            filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(1200%) hue-rotate(180deg) brightness(1.2);
-        }
-
-        /* Contact */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: #ccd6f6;
-            margin-bottom: 10px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(30, 34, 54, 0.95);
-            border: 1px solid #2d3748;
-            color: #e2e8f0;
-            border-radius: 4px;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #4299e1;
-            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
-        }
-
-        .submit-btn {
-            background-color: #4299e1;
-            color: #ffffff;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .submit-btn:hover {
-            background-color: #3182ce;
-        }
-
-        /* Profile Image */
-        .profile-image {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 30px;
-        }
-
-        /* Achievements */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
-        .achievement-card {
-            background-color: rgba(20, 24, 40, 0.8);
-            padding: 25px;
-            border-radius: 8px;
-            border: 1px solid #2d3748;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .achievement-photo {
-            width: 100%;
-            height: auto;
-            max-width: 400px;
-            border-radius: 12px;
-            margin-bottom: 18px;
-            box-shadow: 0 2px 8px rgba(66,153,225,0.12);
-            object-fit: contain;
-        }
-
-        @media (max-width: 992px) {
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-            .achievement-photo {
-                width: 100%;
-                height: auto;
-                max-width: 400px;
-            }
-        }
-        @media (max-width: 768px) {
-            .achievement-photo {
-                max-width: 200px;
-                width: 100%;
-                height: auto;
-            }
-        }
-
-        /* Scroll to Top Button */
-        #scrollToTopBtn {
-            position: fixed;
-            right: 24px;
-            bottom: 32px;
-            width: 48px;
-            height: 48px;
-            background: #4299e1;
-            color: #fff;
-            border: none;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(66,153,225,0.15);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            z-index: 200;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
-        }
-        #scrollToTopBtn.show {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        @media (max-width: 480px) {
-            #scrollToTopBtn {
-                right: 12px;
-                bottom: 16px;
-                width: 38px;
-                height: 38px;
-                font-size: 22px;
-            }
-        }
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 100%;
-                padding: 0 10px;
-            }
-            .header-content {
-                gap: 10px;
-            }
-            .skills-categories-grid {
-                gap: 10px;
-            }
-             .imgtonmoy{
-            width: 220px;
-        }
-        }
-        @media (max-width: 992px) {
-            .header {
-                padding: 30px 0;
-            }
-             .imgtonmoy{
-            width: 220px;
-        }
-            .header-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 24px;
-            }
-            .header-image {
-                margin: 0 auto 30px auto;
-                height: 220px;
-                max-width: 220px;
-            }
-            .name {
-                font-size: 32px;
-            }
-            .tagline {
-                font-size: 22px;
-            }
-            .bio {
-                font-size: 16px;
-            }
-            .skills-categories-grid {
-                grid-template-columns: 1fr;
-            }
-            .achievements-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        @media (max-width: 768px) {
-            section {
-                padding: 40px 10px;
-            }
-            .section-title {
-                font-size: 24px;
-                margin: 0 10px 30px 10px;
-            }
-            .section-title::after {
-                width: 80px;
-            }
-            .imgtonmoy{
-            width: 220px;
-        }
-            .nav {
-                padding: 10px 0;
-            }
-            .nav-links {
-                display: none;
-            }
-            .social-links {
-                justify-content: center;
-                gap: 16px;
-            }
-            .skills-category-title {
-                font-size: 18px;
-            }
-            .skill-item {
-                font-size: 14px;
-                padding: 6px 10px;
-            }
-            .achievements-grid {
-                gap: 16px;
-            }
-            .achievement-card {
-                padding: 16px;
-            }
-            .achievement-photo {
-                width: 70px;
-                height: 70px;
-            }
-        }
-        @media (max-width: 480px) {
-            .header-image {
-                height: 120px;
-                max-width: 120px;
-            } .imgtonmoy{
-            width: 220px;
-        }
-            .name {
-                font-size: 22px;
-            }
-            .tagline {
-                font-size: 16px;
-            }
-            .bio {
-                font-size: 13px;
-            }
-            .skills-category-title {
-                font-size: 15px;
-            }
-            .skill-item {
-                font-size: 12px;
-                padding: 4px 6px;
-            }
-            .achievement-title {
-                font-size: 15px;
-            }
-            .achievement-description {
-                font-size: 12px;
-            }
-
-        }
-
-        /* Footer */
-      
-        footer {
-            background: rgba(20, 24, 40, 0.95);
-            border-top: 1px solid #2d3748;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
-
-        .footer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 18px;
-        }
-
-        .footer-title {
-            color: #4299e1;
-            font-size: 22px;
-            margin-bottom: 10px;
-        }
-
-        .footer-contact {
-            font-size: 16px;
-            color: #cbd5e0;
-            margin-bottom: 8px;
-        }
-
-        .footer-contact a {
-            color: #4299e1;
-            text-decoration: none;
-        }
-
-        .footer-social {
-            margin-bottom: 10px;
-        }
-
-        .footer-social a {
-            color: #e2e8f0;
-            text-decoration: none;
-            font-size: 32px;
-            transition: color 0.3s;
-            display: inline-block;
-            margin: 0 8px;
-        }
-
-        .footer-social a svg {
-            width: 36px;
-            height: 36px;
-            transition: filter 0.3s;
-            border-radius: 50%;
-            display: block;
-            fill: #ffffff;
-            color: #ffffff;
-        }
-
-        .footer-social a:hover {
-            color: #4299e1;
-        }
-
-        .footer-social a:hover svg {
-            filter: brightness(0) saturate(100%) invert(41%) sepia(87%) saturate(1200%) hue-rotate(180deg) brightness(1.2);
-        }
-
-        .footer-copy {
-            font-size: 14px;
-            color: #a0aec0;
-            margin-top: 10px;
-        }
-                .education-grid {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 10px;
-                    margin: 0 10px;
-                }
-                .education-card {
-                    display: flex;
-                    gap: 10px;
-                    background: rgba(20, 24, 40, 0.8);
-                    border-radius: 8px;
-                    padding: 20px;
-                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-                    border: 1px solid #2d3748;
-                }
-                .education-photo {
-                    flex: 0 0 300px;
-                    background: #e2e8f0;
-                    border-radius: 8px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    overflow: hidden;
-                }
-                .education-photo img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
-                    border-radius: 8px;
-                }
-                .education-content {
-                    flex: 1;
-                }
-                .education-title {
-                    color: #4299e1;
-                    font-size: 24px;
-                    margin-bottom: 12px;
-                }
-                .education-institute {
-                    color: #cbd5e0;
-                    font-size: 20px;
-                    margin-bottom: 8px;
-                }
-                .education-period {
-                    color: #a0aec0;
-                    font-size: 16px;
-                    margin-bottom: 16px;
-                }
-                .education-description {
-                    color: #cbd5e0;
-                    font-size: 16px;
-                    line-height: 1.6;
-                }
-                .education-achievements {
-                    margin-top: 16px;
-                }
-                .education-achievements ul {
-                    list-style-type: none;
-                    padding: 0;
-                }
-                .education-achievements li {
-                    color: #4a5568;
-                    margin-bottom: 8px;
-                    display: flex;
-                    align-items: center;
-                }
-                .education-achievements li span {
-                    color: #4299e1;
-                    margin-right: 8px;
-                }
-
-                @media (max-width: 992px) {
-                    .education-card {
-                        flex-direction: column;
-                    }
-                    .education-photo {
-                        flex: 0 0 200px;
-                        margin-bottom: 20px;
-                    }
-                }
-
-                @media (max-width: 768px) {
-                    .education-title {
-                        font-size: 20px;
-                    }
-                    .education-institute {
-                        font-size: 18px;
-                    }
-                    .education-description {
-                        font-size: 14px;
-                    }
-                    .education-period {
-                        font-size: 14px;
-                    }
-                }
-
-                @media (max-width: 480px) {
-                    .education-card {
-                        padding: 10px;
-                    }
-                    .education-photo {
-                        flex: 0 0 150px;
-                    }
-                    .education-title {
-                        font-size: 18px;
-                    }
-                    .education-institute {
-                        font-size: 16px;
-                    }
-                    .education-description {
-                        font-size: 13px;
-                    }
-                    .education-period {
-                        font-size: 13px;
-                    }
-                    .education-achievements li {
-                        font-size: 13px;
-                    }
-                }
-            
-    </style>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 </head>
 <body>
     <canvas id="star-canvas"></canvas>
-    <script>
-        const canvas = document.getElementById('star-canvas');
-        const ctx = canvas.getContext('2d');
-        let stars = [];
-        const STAR_COUNT = 100;
-        
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        function randomBetween(a, b) {
-            return a + Math.random() * (b - a);
-        }
-        
-        function createStar() {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
-            const baseRadius = randomBetween(0.5, 1.7);
-            const twinklePhase = Math.random() * Math.PI * 2;
-            return {
-                x,
-                y,
-                baseRadius,
-                radius: baseRadius,
-                twinklePhase,
-                twinkleSpeed: randomBetween(0.8, 1.8),
-                opacity: randomBetween(0.7, 1)
-            };
-        }
-        
-        function initStars() {
-            stars = [];
-            for (let i = 0; i < STAR_COUNT; i++) {
-                stars.push(createStar());
-            }
-        }
-        
-        function drawStars(time) {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let star of stars) {
-                const twinkle = 0.5 + 0.5 * Math.sin(time * 0.001 * star.twinkleSpeed + star.twinklePhase);
-                star.radius = star.baseRadius * (0.6 + 0.4 * twinkle);
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity * twinkle})`;
-                ctx.shadowColor = '#fff';
-                ctx.shadowBlur = 10 * twinkle;
-                ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
-        
-        function animate(time) {
-            drawStars(time);
-            requestAnimationFrame(animate);
-        }
-        
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            initStars();
-        });
-        
-        resizeCanvas();
-        initStars();
-        animate(0);
-    </script>
+    <script src="script.js"></script>
     <nav class="nav">
         <div class="container nav-container">
             <div class="logo">
@@ -1063,75 +132,116 @@
         </div>
     </section>
 
-    <section id="projects">
+   <section id="projects">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
-            <div class="card">
-                <h3 class="card-title">HyperXion</h3>
-                <p class="card-subtitle">Html • CSS • JS • JSP</p>
-                <p class="card-description">
-                    HyperXion is a responsive website for a tech startup, built with HTML, CSS, and JavaScript.
-                    It features a modern desing, interactive elements, and smooth animations to enhance user experience.
-                    It's made for primary level students to upper level students. Here the main concept is Universe and Space technologies.
-                    The both side marge for anyone can easily learn about Universe and Space technologies.
-                </p>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/TonmoyX/HyperXion" class="social-link" target="_blank" title="Source Code">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="width: 24px; height: 24px;">
-                            <path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/>
-                        </svg>
-                    </a>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="HyperXion_Work.png" alt="HyperXion Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">HyperXion</h3>
+                        <p class="project-subtitle">Html • CSS • JS</p>
+                        <p class="project-description">
+                            HyperXion is a comprehensive educational web platform exploring the cosmos, celestial bodies, and space exploration. Our mission is to democratize access to space science education, making complex astronomical concepts accessible to students of all levels. We aspire to inspire the next generation of astronomers and engineers while fostering scientific literacy and a deeper understanding of our place in the universe.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://tonmoyx.github.io/HyperXion" target="_blank" class="btn btn-live" title="Live Demo">
+                                <i class="fas fa-globe"></i> Live
+                            </a>
+                            <a href="https://github.com/TonmoyX/HyperXion" class="btn btn-github" target="_blank" title="View on GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+<div class="project-card">
+                    <div class="project-image">
+                        <img src="DragonNewsWork.png" alt="Personal Portfolio Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Dragon News</h3>
+                        <p class="project-subtitle">Next.js • React • Tailwind CSS • DaisyUI • Shadcn/ui • Radix UI • MongoDB • Better Auth</p>
+                        <p class="project-description">
+A modern, full-stack news portal application built with cutting-edge web technologies. Dragon News provides a comprehensive platform for discovering, browsing, and reading news articles organized by category with user authentication and personalized content.                        </p>
+                        <div class="project-buttons">
+                            <a href="https://dragon-news-three-xi.vercel.app" class="btn btn-live" target="_blank" title="Live Demo">
+                                <i class="fas fa-globe"></i> Live
+                            </a>
+                            <a href="https://github.com/TonmoyX/Dragon_News" class="btn btn-github" target="_blank" title="View on GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                     <div class="project-card">
+                    <div class="project-image">
+                        <img src="SunCartWork.png" alt="Personal Finance Tracker Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">SunCart</h3>
+                        <p class="project-subtitle">Next.js • React • Tailwind CSS • DaisyUI • MongoDB • Better Auth</p>
+                        <p class="project-description">
+                            A responsive web application for managing personal finances with comprehensive tracking and analysis features.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://sun-cart-ivory.vercel.app" target="_blank" class="btn btn-live" title="Live Demo">
+                                <i class="fas fa-globe"></i> Live
+                            </a>
+                            <a href="https://github.com/TonmoyX/Sun_Cart" class="btn btn-github" target="_blank" title="View on GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="PortfoliWork.png" alt="Personal Portfolio Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Personal Portfolio</h3>
+                        <p class="project-subtitle">Html • CSS • JS</p>
+                        <p class="project-description">
+                            A responsive website for showcasing my skills, projects, and experience with modern design and smooth animations.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://tonmoyx.netlify.app" class="btn btn-live" target="_blank" title="Live Demo">
+                                <i class="fas fa-globe"></i> Live
+                            </a>
+                            <a href="https://github.com/TonmoyX/Tonmoy.Portfolio" class="btn btn-github" target="_blank" title="View on GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="TravelWork.png" alt="Tawsif Trade International Project">
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Tawsif Trade International</h3>
+                        <p class="project-subtitle">Html • CSS • JS</p>
+                        <p class="project-description">
+                            A responsive website for a travel and tours company providing visa processing, flight bookings, and tour planning.
+                        </p>
+                        <div class="project-buttons">
+                            <a href="https://tonmoyx.github.io/Tawsif-Trade-Ineternational" class="btn btn-live" target="_blank" title="Live Demo">
+                                <i class="fas fa-globe"></i> Live
+                            </a>
+                            <a href="https://github.com/TonmoyX/Tawsif-Trade-Ineternational" class="btn btn-github" target="_blank" title="View on GitHub">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- Add more project cards as needed -->
-             <div class="card">
-                <h3 class="card-title">Personal Portfolio</h3>
-                <p class="card-subtitle">Html • CSS • JS</p>
-                <p class="card-description">
-                    Personal Portfolio is a responsive website for showcasing my skills, projects, and experience.
-                </p>
-                <div style="margin-top: 15px;">
-                    <a href="https://tonmoyx.github.io/Tonmoy.Portfolio" class="social-link" target="_blank" title="Source Code">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="width: 24px; height: 24px;">
-                            <path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-             <!-- Add more project cards as needed -->
-             <div class="card">
-                <h3 class="card-title">Personal Finance Tracker</h3>
-                <p class="card-subtitle">Html • CSS • JS •JSP</p>
-                <p class="card-description">
-                    Personal Finance Tracker is a responsive webiste for managing personal finances.
-                </p>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/TonmoyX/Personal-Finace-Tracker/tree/main/Personal_Finance/src/main/webapp" class="social-link" target="_blank" title="Source Code">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="width: 24px; height: 24px;">
-                            <path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <!-- Add more project cards as needed -->
-              <div class="card">
-                <h3 class="card-title">Tawsif Trade International</h3>
-                <p class="card-subtitle">Html • CSS • JS</p>
-                <p class="card-description">
-                    Tawsif Trade International is a responsive website for a Travel & Tours company.
-                    Serving clients with top-notch travel services, including visa processing, and flight bookings.
-                </p>
-                <div style="margin-top: 15px;">
-                    <a href="https://github.com/TonmoyX/Tawsif-Trade-Ineternational" class="social-link" target="_blank" title="Source Code">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" style="width: 24px; height: 24px;">
-                            <path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-             <!-- Add more project cards as needed -->
         </div>
     </section>
+
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Skills</h2>
@@ -1530,19 +640,7 @@ fill="#03f602" viewBox="0 0 24 24" >
             <div style="font-size:14px; color:#ffffff; margin-top:10px;">&copy; Morshed Alam Tonmoy | All rights reserved 2025</div>
         </div>
     </footer>
-    <script>
-        // Scroll to Top Button logic
-        const scrollBtn = document.getElementById('scrollToTopBtn');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 300) {
-                scrollBtn.classList.add('show');
-                scrollBtn.style.display = 'flex';
-            } else {
-                scrollBtn.classList.remove('show');
-                scrollBtn.style.display = 'none';
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
 
