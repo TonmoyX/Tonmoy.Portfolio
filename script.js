@@ -66,13 +66,37 @@ initStars();
 animate(0);
 
 // Scroll to Top Button logic
-const scrollBtn = document.getElementById('scrollToTopBtn');
-window.addEventListener('scroll', function() {
-    if (window.scrollY > 300) {
-        scrollBtn.classList.add('show');
-        scrollBtn.style.display = 'flex';
-    } else {
-        scrollBtn.classList.remove('show');
-        scrollBtn.style.display = 'none';
-    }
-});
+function initScrollButton() {
+    const scrollBtn = document.getElementById('scrollToTopBtn');
+    if (!scrollBtn) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            scrollBtn.classList.add('show');
+            scrollBtn.style.display = 'flex';
+            scrollBtn.style.opacity = '1';
+            scrollBtn.style.pointerEvents = 'auto';
+        } else {
+            scrollBtn.classList.remove('show');
+            scrollBtn.style.opacity = '0';
+            scrollBtn.style.pointerEvents = 'none';
+        }
+    });
+    
+    // Click handler for smooth scroll
+    scrollBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initScrollButton);
+} else {
+    initScrollButton();
+}
